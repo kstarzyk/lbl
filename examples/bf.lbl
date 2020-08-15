@@ -1,0 +1,48 @@
+%cbc;
+
+${
+    loops: 0,
+    mem: [],
+    p: 0,
+}
+
+/>/ { $p++ }
+/</ { $p-- }
+/+/ { 
+    $mem[$p]++; 
+    ? $mem[$p] == 256 { $mem[$p] = 0 }
+}
+/-/ {
+    $mem[$p]--; 
+    ? $mem[$p] == -1 { $mem[$p] = 255 }
+}
+/./ { << $mem[$p] }
+/,/ { >> $mem[$p] }
+
+/[/ {
+    ? $mem[$p] != 0 : skip();
+    $loops = 1;
+    loop $loops != 0 {
+        next();
+        ? current() == "[" {
+            $loops++
+        };
+        ? current() == "]" {
+            $loops--
+        }
+    }
+}
+
+/]/ {
+    ? $mem[$p] == 0 : skip();
+    $loops = 1;
+    loop $loops != 0 {
+        prev();
+        ? current() == "[" {
+            $loops--
+        };
+        ? current() == "]" {
+            $loops++
+        }    
+    }
+}

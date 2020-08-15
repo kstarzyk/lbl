@@ -1,0 +1,24 @@
+name: Build and prepare release
+
+on:
+  push:
+    branches: [master]
+  tags:
+    - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: kokke/tiny-regex-c
+          path: "./vendor"
+      - uses: actions/checkout@v2
+      - name: make
+        run: make
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lblc
+          path: ./lblc
