@@ -19,7 +19,7 @@
 
 ```
 $ mkdir vendor
-$ git clone https://github.com/kokke/tiny-regex-c vendor/
+$ git clone https://github.com/kokke/tiny-regex-c vendors/tiny-regex-c
 $ make # DEBUG=1
 ```
 

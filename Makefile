@@ -1,4 +1,4 @@
-CC = clang
+CC = gcc
 FLAGS =  -std=c11 -D_SVID_SOURCE -pedantic -Wall \
 	 -Wformat-zero-length 
 
