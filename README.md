@@ -18,8 +18,9 @@
 ## Install from source
 
 ```
-$ mkdir vendor
+$ git clone https://github.com/kstarzyk/lbl && cd lbl
 $ git clone https://github.com/kokke/tiny-regex-c vendors/tiny-regex-c
+# outputs lblc binary to root directory
 $ make # DEBUG=1
 ```
 
@@ -30,3 +31,8 @@ $ make # DEBUG=1
 ## Examples
 
 - [brainfuck interpreter](examples/bf.lbl)
+
+```
+$ ./lblc examples/bf.lbl
+$ ./examples/bf ./examples/99_bottles.lbl
+```
